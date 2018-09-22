@@ -82,12 +82,12 @@ exports.loan = function (req, res, next) {
     if(months > 18 && req.body.salary > 800000){
         if(req.body.salary > 800000 && req.body.salary <= 1000000){
             return res.status(200).json({
-                mensaje: 'Se le a aprobado un valor por $5.000.000'
+                mensaje: 'Se le ha aprobado un valor por $5.000.000'
             });
         }
         if(req.body.salary > 1000000 && req.body.salary <= 4000000){
             return res.status(200).json({
-                mensaje: 'Se le a aprobado un valor por $20.000.000'
+                mensaje: 'Se le ha aprobado un valor por $20.000.000'
             });
         }
         if(req.body.salary > 4000000){
