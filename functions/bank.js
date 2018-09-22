@@ -69,7 +69,7 @@ exports.validateEntryDate = function(req, res, next){
         });
     }else{
         return res.status(500).json({
-            mensaje: 'Valor no valido'
+            mensaje: 'La fecha ingresada debe ser inferior al día de hoy'
         });
     }
 };
