@@ -1,4 +1,4 @@
-var customerModel = require('/models/customer');
+var customerModel = require('../models/customer');
 
 exports.createCustomer = function (req, res, next) {
     customerModel.findOne({id:req.body.id}, function (err, customer) {

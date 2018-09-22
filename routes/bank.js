@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var bankFuntions = require('/functions/bank');
+var bankFuntions = require('../functions/bank');
 
 /* GET users listing. */
 router.post('/createCustomer', function(req, res, next) {
