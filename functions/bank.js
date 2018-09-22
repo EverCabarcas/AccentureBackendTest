@@ -4,7 +4,7 @@ exports.createCustomer = function (req, res, next) {
     customerModel.findOne({id:req.body.id}, function (err, customer) {
         if(err){
             return res.status(400).json({
-                mensaje: 'Error en la operacion '+err
+                mensaje: 'An error has occurred '+err
             });
         }
         if(!customer){
@@ -18,7 +18,7 @@ exports.createCustomer = function (req, res, next) {
             newCustomer.save();
 
             res.status(200).json({
-                mensaje: 'Cliente creado con exito'
+                mensaje: 'Customer registered successfully.'
             });
         }
     });
@@ -28,16 +28,16 @@ exports.validateId = function (req, res, next) {
     customerModel.findOne({id:req.body.id}, function (err, customer) {
         if(err){
             return res.status(400).json({
-                mensaje: 'Error en la operacion '+err
+                mensaje: 'An error has occurred '+err
             });
         }
         if(customer){
             return res.status(500).json({
-                mensaje: 'El número de identificación proporcionado ya se encuentra almacenado'
+                mensaje: 'This ID card number already exists.'
             });
         }else{
             return res.status(200).json({
-                mensaje: 'No se encuentra almacenado'
+                mensaje: 'Ok.'
             });
         }
     });
@@ -50,11 +50,11 @@ exports.validatebirthdate = function(req, res, next){
 
   if(birthday <= 18){
       return res.status(500).json({
-          mensaje: 'El cliente debe tener mas de 18 años'
+          mensaje: 'The customer must be of legal age (+18).'
       });
   }else{
       return res.status(200).json({
-          mensaje: 'Valor permitido'
+          mensaje: 'Ok.'
       });
   }
 
@@ -65,11 +65,11 @@ exports.validateEntryDate = function(req, res, next){
     var datehiring = new Date(req.body.hiring);
     if(datehiring.getTime() < date.getTime()){
         return res.status(200).json({
-            mensaje: 'la fecha de ingreso a la empresa debe ser menor al dia de hoy'
+            mensaje: 'Ok.'
         });
     }else{
         return res.status(500).json({
-            mensaje: 'La fecha ingresada debe ser inferior al día de hoy'
+            mensaje: 'The hiring date must be before the current day.'
         });
     }
 };
@@ -82,22 +82,22 @@ exports.loan = function (req, res, next) {
     if(months > 18 && req.body.salary > 800000){
         if(req.body.salary > 800000 && req.body.salary <= 1000000){
             return res.status(200).json({
-                mensaje: 'Se le ha aprobado un valor por $5.000.000'
+                mensaje: 'The credit loan has been approved for a value of $5.000.000.'
             });
         }
         if(req.body.salary > 1000000 && req.body.salary <= 4000000){
             return res.status(200).json({
-                mensaje: 'Se le ha aprobado un valor por $20.000.000'
+                mensaje: 'The credit loan has been approved for a value of $20.000.000.'
             });
         }
         if(req.body.salary > 4000000){
             return res.status(200).json({
-                mensaje: 'Se le a aprobado un valor por $50.000.000'
+                mensaje: 'The credit loan has been approved for a value of $50.000.000.'
             });
         }
     }else{
         return res.status(500).json({
-            mensaje: 'No cumple con los criterios para tener aprobado un credito'
+            mensaje: 'You don´t meet the requirements for a credit loan.'
         });
     }
 
