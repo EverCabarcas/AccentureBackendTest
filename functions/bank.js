@@ -35,6 +35,10 @@ exports.validateId = function (req, res, next) {
             return res.status(500).json({
                 mensaje: 'El número de identificación proporcionado ya se encuentra almacenado'
             });
+        }else{
+            return res.status(200).json({
+                mensaje: 'No se encuentra almacenado'
+            });
         }
     });
 };
@@ -47,6 +51,10 @@ exports.validatebirthdate = function(req, res, next){
       return res.status(500).json({
           mensaje: 'El cliente debe tener mas de 18 años'
       });
+  }else{
+      return res.status(200).json({
+          mensaje: 'Valor permitido'
+      });
   }
 
 };
@@ -56,6 +64,10 @@ exports.validateEntryDate = function(req, res, next){
     if(req.body.hiring.getTime() < date.getTime()){
         return res.status(200).json({
             mensaje: 'la fecha de ingreso a la empresa debe ser menor al dia de hoy'
+        });
+    }else{
+        return res.status(500).json({
+            mensaje: 'Valor no valido'
         });
     }
 };
