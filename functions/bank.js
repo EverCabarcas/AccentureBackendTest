@@ -62,7 +62,8 @@ exports.validatebirthdate = function(req, res, next){
 
 exports.validateEntryDate = function(req, res, next){
     var date = new Date();
-    if(req.body.hiring.getTime() < date.getTime()){
+    var datehiring = new Date(req.body.hiring);
+    if(datehiring.getTime() < date.getTime()){
         return res.status(200).json({
             mensaje: 'la fecha de ingreso a la empresa debe ser menor al dia de hoy'
         });
@@ -75,7 +76,8 @@ exports.validateEntryDate = function(req, res, next){
 
 exports.loan = function (req, res, next) {
     var date = new Date();
-    var months = ((date.getFullYear()*12) + (date.getMonth()+1)) + ((req.body.hiring.getFullYear()*12) + (req.body.hiring.getMonth()+1));
+    var datehiring = new Date(req.body.hiring);
+    var months = ((date.getFullYear()*12) + (date.getMonth()+1)) + ((datehiring.getFullYear()*12) + (datehiring.getMonth()+1));
 
     if(months > 18 && req.body.salary > 800000){
         if(req.body.salary > 800000 && req.body.salary <= 1000000){
