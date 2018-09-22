@@ -77,7 +77,7 @@ exports.validateEntryDate = function(req, res, next){
 exports.loan = function (req, res, next) {
     var date = new Date();
     var datehiring = new Date(req.body.hiring);
-    var months = ((date.getFullYear()*12) + (date.getMonth()+1)) + ((datehiring.getFullYear()*12) + (datehiring.getMonth()+1));
+    var months = ((date.getFullYear()*12) + (date.getMonth()+1)) - ((datehiring.getFullYear()*12) + (datehiring.getMonth()+1));
 
     if(months > 18 && req.body.salary > 800000){
         if(req.body.salary > 800000 && req.body.salary <= 1000000){
