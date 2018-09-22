@@ -45,7 +45,8 @@ exports.validateId = function (req, res, next) {
 
 exports.validatebirthdate = function(req, res, next){
   var date = new Date();
-  var birthday = Math.abs(date.getTime() - req.body.date.getTime())/(1000*60*60*24*360.25);
+  var datebirthday = new Date(req.body.date);
+  var birthday = Math.abs(date.getTime() - datebirthday.getTime())/(1000*60*60*24*360.25);
 
   if(birthday <= 18){
       return res.status(500).json({
